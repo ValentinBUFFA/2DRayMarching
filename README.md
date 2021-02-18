@@ -1,4 +1,5 @@
 # 2DRayMarching
+*Requirements:* `numpy`, `pygame` <br/>
 Short 2D ray marching experiment from scratch.
 
 ## Usage
