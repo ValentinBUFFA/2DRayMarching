@@ -16,7 +16,7 @@ class Circle:
     def __init__(self, pos, radius):
         self.pos = pos
         self.r = radius
-        pygame.draw.circle(background, (42, 157, 143), pos, radius)
+        pygame.draw.circle(background, (42, 157, 143), pos, radius + 1)
     
     def dst(self, ipos):
         dst = abs(length(ipos, self.pos)-self.r)
@@ -36,10 +36,14 @@ class Rectangle:
 
 class Line:
     def __init__(self,pos1,pos2):
-        self.pos1 = pos1
-        self.pos2 = pos2
+        self.A = pos1
+        self.B = pos2
         self.length = length(pos1,pos2)
         pygame.draw.line(background, (42, 157, 143), pos1, pos2)
     
     def dst(self,ipos):
-        return abs((self.pos2[0]-self.pos1[0])*(self.pos1[1]-ipos[1])-(self.pos1[0]-ipos[0])*(self.pos2[1]-self.pos1[1]))/length(self.pos1,self.pos2)
+        if np.dot(np.subtract(self.B,self.A),np.subtract(ipos,self.A))<0:
+            return length(ipos, self.A)
+        if np.dot(np.subtract(self.A,self.B),np.subtract(ipos,self.B))<0:
+            return(length(ipos,self.B))
+        return abs((self.A[0]-self.B[0])*(self.B[1]-ipos[1])-(self.B[0]-ipos[0])*(self.A[1]-self.B[1]))/length(self.B,self.A)
