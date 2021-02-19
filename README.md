@@ -8,3 +8,8 @@ Right click to spawn a random-sized rectangle at cursor position. <br/>
 Left click to spawn a random-sized circle at cursor position.
 
 shapes.py contains the classes for different shapes, it is possible to add support for a new shape simply by adding a class with a 'dst(pos)' method, which gives the shortest distance between 'pos' and said shape.
+
+Currently supports:
+-Circles
+-Rectangle
+-Lines
